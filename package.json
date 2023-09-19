@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@sanity/vision": "^3.16.4",
     "@types/node": "20.6.0",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
@@ -16,9 +17,12 @@
     "eslint": "8.49.0",
     "eslint-config-next": "13.4.19",
     "next": "13.4.19",
+    "next-sanity": "^5.5.3",
     "postcss": "8.4.29",
+    "prettier": "^3.0.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "sanity": "^3.16.4",
     "tailwindcss": "3.3.3",
     "typescript": "5.2.2"
   }
