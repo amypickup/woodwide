@@ -2,7 +2,7 @@
 
 import { PortableTextBlock } from "sanity";
 
-export type ProfileType = {
+export type AuthorType = {
   _id: string,
   name: string,
   slug: string,
@@ -11,4 +11,18 @@ export type ProfileType = {
     image: string
   },
   bio: PortableTextBlock[],
+};
+
+export type PostType = {
+  _id: string,
+  name: string,
+  title: string,
+  description: string,
+  slug: string,
+  author: AuthorType,
+  mainImage: {
+    alt: string,
+    image: string
+  },
+  body: PortableTextBlock[],
 };
