@@ -1,11 +1,11 @@
 // types/index.ts
 
-import { PortableTextBlock, DatetimeComponents } from "sanity";
+import { PortableTextBlock, DatetimeComponents, Slug } from "sanity";
 
 export type AuthorType = {
   _id: string,
   name: string,
-  slug: string,
+  slug: Slug,
   image: {
     alt: string,
     image: string
@@ -18,12 +18,29 @@ export type PostType = {
   name: string,
   title: string,
   description: string,
-  slug: string,
+  slug: Slug,
   author: AuthorType,
   mainImage: {
     alt: string,
     image: string
   },
   body: PortableTextBlock[],
-  publishedAt: DatetimeComponents,
+  publishedAt: string,
+};
+
+export type RecipeType = {
+  _id: string,
+  name: string,
+  title: string,
+  description: string,
+  slug: Slug,
+  author: AuthorType,
+  mainImage: {
+    alt: string,
+    image: string
+  },
+  time: string,
+  ingredients: PortableTextBlock[],
+  instructions: string[],
+  publishedAt: string,
 };

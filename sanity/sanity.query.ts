@@ -53,9 +53,43 @@ export async function getPost(slug: string) {
         name,
         slug,
         image,
-        bio,
       },
       body,
+      publishedAt,
+    }`,
+    { slug }
+  );
+}
+
+export async function getRecipes() {
+  return client.fetch(
+    groq`*[_type == "recipe"]{
+      _id,
+      title,
+      mainImage,
+      author->{
+        name,
+      },
+      slug,
+    }`
+  );
+}
+
+export async function getRecipe(slug: string) {
+  return client.fetch(
+    groq`*[_type == "recipe" && slug.current == $slug][0]{
+      _id,
+      title,
+      description,
+      mainImage,
+      author->{
+        name,
+        slug,
+        image,
+      },
+      time,
+      ingredients,
+      instructions,
       publishedAt,
     }`,
     { slug }

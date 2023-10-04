@@ -4,7 +4,6 @@ import { PortableText, PortableTextComponents } from "@portabletext/react";
 import client from "../../../sanity/sanity.client";
 import imageUrlBuilder from "@sanity/image-url";
 import Image from "next/image";
-import { Inter } from "next/font/google";
 
 const builder = imageUrlBuilder(client);
 const mySanityComponents: PortableTextComponents = {
@@ -29,7 +28,7 @@ export default async function AuthorHero() {
           {authors.map((author) => (
             <a
               key={author._id}
-              href={author.slug}
+              href={author.slug.current}
               className="group grid grid-cols-2 gap-x-6 xs:grid-cols-1"
             >
               <div className="w-full overflow-hidden rounded-lg">
