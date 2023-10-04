@@ -21,7 +21,11 @@ export default defineType({
       type: 'slug',
       options: {
         source: 'title',
-        maxLength: 96,
+        maxLength: 200,
+        slugify: input => input
+                         .toLowerCase()
+                         .replace(/\s+/g, '-')
+                         .slice(0, 200),
       },
     }),
     defineField({
@@ -37,6 +41,17 @@ export default defineType({
       options: {
         hotspot: true,
       },
+      fields: [{
+        name: 'alt',
+        title: 'Alt',
+        type: 'string',
+      },
+      {
+        name: 'caption',
+        title: 'Caption',
+        type: 'string',
+      },
+    ],
     }),
     defineField({
       name: 'categories',

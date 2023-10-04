@@ -49,6 +49,12 @@ export async function getPost(slug: string) {
       title,
       description,
       mainImage,
+      author->{
+        name,
+        slug,
+        image,
+        bio,
+      },
       body,
       publishedAt,
     }`,

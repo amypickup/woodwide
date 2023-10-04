@@ -1,6 +1,6 @@
 // types/index.ts
 
-import { PortableTextBlock } from "sanity";
+import { PortableTextBlock, DatetimeComponents } from "sanity";
 
 export type AuthorType = {
   _id: string,
@@ -25,4 +25,5 @@ export type PostType = {
     image: string
   },
   body: PortableTextBlock[],
+  publishedAt: DatetimeComponents,
 };

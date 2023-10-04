@@ -11,7 +11,7 @@ const builder = imageUrlBuilder(client);
 const mySanityComponents: PortableTextComponents = {
   block: {
     normal: ({ children }) => (
-      <p className="mt-1 text-lg font-medium text-gray-900">{children}</p>
+      <p className="text-lg font-medium text-gray-900">{children}</p>
     ),
   },
 };
@@ -21,8 +21,6 @@ const mySanityComponents: PortableTextComponents = {
 export default async function Posts() {
   const posts: PostType[] = await getPosts();
 
-  console.log(posts);
-
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
@@ -30,8 +28,12 @@ export default async function Posts() {
 
         <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
           {posts.map((post) => (
-            <a key={post._id} href={`posts/${post.slug}`} className="group">
-              <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+            <a
+              key={post._id}
+              href={`posts/${post.slug.current}`}
+              className="group"
+            >
+              <div className="w-full overflow-hidden rounded-lg bg-gray-200">
                 {post.mainImage ? (
                   <Image
                     src={builder.image(post.mainImage).width(300).url()}
@@ -42,8 +44,8 @@ export default async function Posts() {
                   />
                 ) : null}
               </div>
-              <h3 className="mt-4 text-sm text-gray-700">{post.title}</h3>
-              <p>{post.description}</p>
+              <h3 className="mt-4 text-lg font-semibold">{post.title}</h3>
+              <p className="text-sm font-light">{post.description}</p>
             </a>
           ))}
         </div>
