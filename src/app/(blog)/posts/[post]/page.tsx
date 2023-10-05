@@ -117,7 +117,11 @@ export default async function Post({ params }: Props) {
             <Image
               width={40}
               height={40}
-              src={builder.image(post.author.image).width(40).height(40).url()}
+              src={builder
+                .image(post.author.image)
+                .width(120)
+                .height(120)
+                .url()}
               alt={post.author.name}
               className="inline-block mr-2 rounded-full"
             />
@@ -125,7 +129,7 @@ export default async function Post({ params }: Props) {
               <div>
                 By{" "}
                 <a
-                  href={post.author.slug.current}
+                  href={"/authors"}
                   className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                 >
                   {post.author.name}

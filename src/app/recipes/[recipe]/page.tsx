@@ -102,8 +102,8 @@ export default async function Recipe({ params }: Props) {
               height={40}
               src={builder
                 .image(recipe.author.image)
-                .width(40)
-                .height(40)
+                .width(120)
+                .height(120)
                 .url()}
               alt={recipe.author.name}
               className="inline-block mr-2 rounded-full"
@@ -148,7 +148,7 @@ export default async function Recipe({ params }: Props) {
         <div className="col-span-3 mx-3 md:mx-0">{recipe.time}</div>
 
         <div className="col-span-5 mb-3 md:mb-0 mx-3 md:mx-0">
-          {recipe.description}
+          {recipe.story}
         </div>
 
         <div className="col-span-3 border-black border-t-4 mx-3 md:mx-0">

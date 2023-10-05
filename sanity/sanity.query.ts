@@ -81,6 +81,7 @@ export async function getRecipe(slug: string) {
       _id,
       title,
       description,
+      story,
       mainImage,
       author->{
         name,
