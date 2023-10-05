@@ -44,3 +44,18 @@ export type RecipeType = {
   instructions: string[],
   publishedAt: string,
 };
+
+export type DocumentType = {
+  _id: string,
+  _type: string,
+  title: string,
+  description: string,
+  slug: Slug,
+  author: AuthorType,
+  mainImage: {
+    alt: string,
+    image: string
+  },
+  categories: string[],
+  publishedAt: string,
+};

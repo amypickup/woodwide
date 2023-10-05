@@ -1,6 +1,5 @@
 import { getRecipes } from "../../../sanity/sanity.query";
 import type { RecipeType } from "../../../types";
-import { PortableTextComponents } from "@portabletext/react";
 import client from "../../../sanity/sanity.client";
 import imageUrlBuilder from "@sanity/image-url";
 import Image from "next/image";

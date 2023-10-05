@@ -95,7 +95,7 @@ export default async function Recipe({ params }: Props) {
           <h1 className="font-semibold text-4xl mb-2 px-3 md:px-0">
             {recipe.title}
           </h1>
-          {/* Author Section */}
+          {/* Author Section, TODO: build out author detail page, recipe.author.slug.current */}
           <div className="mb-4 px-3 md:px-0">
             <Image
               width={40}
@@ -112,7 +112,7 @@ export default async function Recipe({ params }: Props) {
               <div>
                 By{" "}
                 <a
-                  href={recipe.author.slug.current}
+                  href={"/authors"}
                   className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                 >
                   {recipe.author.name}

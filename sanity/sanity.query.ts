@@ -95,3 +95,20 @@ export async function getRecipe(slug: string) {
     { slug }
   );
 }
+
+export async function getDocuments() {
+  return client.fetch(
+    groq`*[_type == "recipe" ||_type == "post" ]{
+      _id,
+      _type,
+      title,
+      mainImage,
+      author->{
+        name,
+      },
+      slug,
+      description,
+      publishedAt,
+    }`
+  );
+}
