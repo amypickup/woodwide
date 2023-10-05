@@ -33,6 +33,7 @@ export type RecipeType = {
   name: string,
   title: string,
   description: string,
+  story: string,
   slug: Slug,
   author: AuthorType,
   mainImage: {
@@ -50,7 +51,6 @@ export type DocumentType = {
   _type: string,
   title: string,
   description: string,
-  story: string,
   slug: Slug,
   author: AuthorType,
   mainImage: {
