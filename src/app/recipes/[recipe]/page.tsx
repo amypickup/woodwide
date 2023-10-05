@@ -88,6 +88,17 @@ export default async function Recipe({ params }: Props) {
   const slug = params.recipe;
   const recipe: RecipeType = await getRecipe(slug);
 
+  const datePublished = new Date(recipe.publishedAt).toLocaleTimeString(
+    "en-US",
+    {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    }
+  );
+
   return (
     <main className="max-w-6xl mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-8 md:gap-x-8 md:gap-y-3">
@@ -112,21 +123,13 @@ export default async function Recipe({ params }: Props) {
               <div>
                 By{" "}
                 <a
-                  href={"/authors"}
+                  href={`/authors/${recipe.author.slug.current}`}
                   className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                 >
                   {recipe.author.name}
                 </a>
               </div>
-              <div className="font-light text-xs">
-                {new Date(recipe.publishedAt).toLocaleTimeString("en-US", {
-                  year: "numeric",
-                  month: "short",
-                  day: "numeric",
-                  hour: "2-digit",
-                  minute: "2-digit",
-                })}
-              </div>
+              <div className="font-light text-xs">{datePublished}</div>
             </div>
           </div>
         </div>

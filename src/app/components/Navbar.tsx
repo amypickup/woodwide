@@ -14,31 +14,20 @@ export default function Navbar() {
             <li>
               <Link
                 href="/studio/desk"
-                className="hover:text-purple-400 duration-300"
+                className="hover:text-red-400 duration-300"
               >
                 Sanity Studio
               </Link>
             </li>
             <li>
-              <Link
-                href="/authors"
-                className="hover:text-purple-400 duration-300"
-              >
-                Authors
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/posts"
-                className="hover:text-purple-400 duration-300"
-              >
+              <Link href="/posts" className="hover:text-slate-400 duration-300">
                 Posts
               </Link>
             </li>
             <li>
               <Link
                 href="/recipes"
-                className="hover:text-purple-400 duration-300"
+                className="text-indigo-700 hover:text-indigo-400 duration-300"
               >
                 Recipes
               </Link>

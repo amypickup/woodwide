@@ -8,6 +8,7 @@ export async function getAuthors() {
   return client.fetch(
     groq`*[_type == "author"]{
       _id,
+      _type,
       name,
       slug,
       image,
@@ -20,10 +21,21 @@ export async function getAuthor(slug: string) {
   return client.fetch(
     groq`*[_type == "author" && slug.current == $slug][0]{
       _id,
+      _type,
       name,
       slug,
       image,
       bio,
+      "relatedRecipes": *[_type=='recipe' && references(^._id)]{ 
+        title, 
+        description,
+        slug,
+        mainImage,
+        publishedAt,
+        author->{
+          name,
+        },
+       },
     }`,
     { slug }
   );
@@ -33,6 +45,7 @@ export async function getPosts() {
   return client.fetch(
     groq`*[_type == "post"]{
       _id,
+      _type,
       title,
       description,
       mainImage,
@@ -46,6 +59,7 @@ export async function getPost(slug: string) {
   return client.fetch(
     groq`*[_type == "post" && slug.current == $slug][0]{
       _id,
+      _type,
       title,
       description,
       mainImage,
@@ -65,6 +79,7 @@ export async function getRecipes() {
   return client.fetch(
     groq`*[_type == "recipe"]{
       _id,
+      _type,
       title,
       mainImage,
       author->{
@@ -79,6 +94,7 @@ export async function getRecipe(slug: string) {
   return client.fetch(
     groq`*[_type == "recipe" && slug.current == $slug][0]{
       _id,
+      _type,
       title,
       description,
       story,
