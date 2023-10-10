@@ -6,6 +6,11 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto flex lg:flex-row flex-col items-center lg:justify-between justify-center gap-y-4 md:px-16 px-6 py-16 text-zinc-400">
         <ul className="text-sm">
           <li>
+            <Link href="https://www.buymeacoffee.com/pickup">
+              Buy me a (mushroom) coffee ☕
+            </Link>
+          </li>
+          <li>
             <Link href="/studio/desk">Sanity Studio</Link>
           </li>
         </ul>
