@@ -12,16 +12,13 @@ export default function Navbar() {
         <nav>
           <ul className="flex items-center gap-x-8">
             <li>
-              <Link
-                href="/studio/desk"
-                className="hover:text-red-400 duration-300"
-              >
-                Sanity Studio
+              <Link href="/shop" className="hover:text-slate-400 duration-300">
+                Shop
               </Link>
             </li>
             <li>
               <Link href="/posts" className="hover:text-slate-400 duration-300">
-                Posts
+                Learn
               </Link>
             </li>
             <li>
@@ -29,9 +26,17 @@ export default function Navbar() {
                 href="/recipes"
                 className="text-indigo-700 hover:text-indigo-400 duration-300"
               >
-                Recipes
+                Cook
               </Link>
             </li>
+            {/*<li>
+              <Link
+                href="/support"
+                className="text-pink-400 hover:text-pink-700 duration-300"
+              >
+                Support
+              </Link>
+  </li> */}
           </ul>
         </nav>
       </div>

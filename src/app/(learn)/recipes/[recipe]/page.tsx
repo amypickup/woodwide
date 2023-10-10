@@ -1,10 +1,10 @@
 import Image from "next/image";
 import { Metadata } from "next";
-import { getRecipe } from "../../../../sanity/sanity.query";
-import type { RecipeType } from "../../../../types";
+import { getRecipe } from "../../../../../sanity/sanity.query";
+import type { RecipeType } from "../../../../../types";
 import { PortableText, PortableTextComponents } from "@portabletext/react";
 import imageUrlBuilder from "@sanity/image-url";
-import client from "../../../../sanity/sanity.client";
+import client from "../../../../../sanity/sanity.client";
 
 type Props = {
   params: {
@@ -29,20 +29,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 const builder = imageUrlBuilder(client);
-
-const authorBriefComponents: PortableTextComponents = {
-  block: {
-    normal: ({ children }) => (
-      <p className="mt-1 text-sm font-light text-gray-900">{children}</p>
-    ),
-  },
-};
-
-const descriptionComponents: PortableTextComponents = {
-  block: {
-    normal: ({ children }) => <p className="">{children}</p>,
-  },
-};
 
 const ingredientsComponents: PortableTextComponents = {
   block: {
@@ -165,7 +151,7 @@ export default async function Recipe({ params }: Props) {
         <div className="col-span-5 border-black border-t-4 mx-3 md:mx-0">
           <div className="uppercase font-bold text-lg mb-6">Preparation</div>
           {recipe.instructions.map((instruction, index) => (
-            <div>
+            <div key={index}>
               <div className="font-bold">Step {index + 1}</div>
               <div className="mb-4">{instruction}</div>
             </div>

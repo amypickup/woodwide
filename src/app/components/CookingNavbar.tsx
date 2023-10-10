@@ -32,6 +32,14 @@ export default function CookingNavbar() {
                 Recipes
               </Link>
             </li>
+            <li>
+              <Link
+                href="/donate"
+                className="text-pink-400 hover:text-pink-700 duration-300"
+              >
+                Donate
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>

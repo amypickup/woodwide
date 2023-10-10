@@ -70,14 +70,6 @@ const postComponents: PortableTextComponents = {
   },
 };
 
-const authorBriefComponents: PortableTextComponents = {
-  block: {
-    normal: ({ children }) => (
-      <p className="mt-1 text-sm font-light text-gray-900">{children}</p>
-    ),
-  },
-};
-
 export default async function Post({ params }: Props) {
   const slug = params.post;
   const post: PostType = await getPost(slug);

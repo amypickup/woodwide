@@ -27,6 +27,7 @@ export async function getAuthor(slug: string) {
       image,
       bio,
       "relatedRecipes": *[_type=='recipe' && references(^._id)]{ 
+        _type,
         title, 
         description,
         slug,

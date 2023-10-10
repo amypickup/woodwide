@@ -1,6 +1,6 @@
-import { getRecipes } from "../../../sanity/sanity.query";
-import type { RecipeType } from "../../../types";
-import client from "../../../sanity/sanity.client";
+import { getRecipes } from "../../../../sanity/sanity.query";
+import type { RecipeType } from "../../../../types";
+import client from "../../../../sanity/sanity.client";
 import imageUrlBuilder from "@sanity/image-url";
 import Image from "next/image";
 

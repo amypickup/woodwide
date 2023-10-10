@@ -77,7 +77,7 @@ export default async function Author({ params }: Props) {
           return (
             <a
               key={doc._id}
-              href={`${doc._type}s/${doc.slug.current}`}
+              href={`/${doc._type}s/${doc.slug.current}`}
               className="group md:flex"
             >
               <div className="md:basis-1/6">{datePublished}</div>
