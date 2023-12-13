@@ -1,5 +1,3 @@
-// types/index.ts
-
 import { PortableTextBlock, Slug } from "sanity";
 
 export type AuthorType = {

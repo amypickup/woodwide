@@ -16,6 +16,12 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'collection',
+      title: 'Collection',
+      type: 'reference',
+      to: {type: 'collection'},
+    }),
+    defineField({
       name: 'story',
       title: 'Story',
       type: 'text',

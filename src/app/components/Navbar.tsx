@@ -12,11 +12,6 @@ export default function Navbar() {
         <nav>
           <ul className="flex items-center gap-x-8">
             <li>
-              <Link href="/shop" className="hover:text-slate-400 duration-300">
-                Shop
-              </Link>
-            </li>
-            <li>
               <Link href="/posts" className="hover:text-slate-400 duration-300">
                 Learn
               </Link>
@@ -29,14 +24,6 @@ export default function Navbar() {
                 Cook
               </Link>
             </li>
-            {/*<li>
-              <Link
-                href="/support"
-                className="text-pink-400 hover:text-pink-700 duration-300"
-              >
-                Support
-              </Link>
-  </li> */}
           </ul>
         </nav>
       </div>
