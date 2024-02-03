@@ -82,7 +82,7 @@ export default defineType({
     }),
     defineField({
       name: 'ingredientsImport',
-      title: 'Imported Ingredients',
+      title: 'Ingredients',
       type: 'array',
       of: [{
         type: 'object',
