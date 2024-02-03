@@ -81,11 +81,6 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'ingredients',
-      title: 'Ingredients',
-      type: 'blockContent', 
-    }),
-    defineField({
       name: 'ingredientsImport',
       title: 'Imported Ingredients',
       type: 'array',

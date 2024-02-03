@@ -44,7 +44,6 @@ export type RecipeType = {
     image: string;
   };
   time: string;
-  ingredients: PortableTextBlock[];
   ingredientsImport: IngredientSection[];
   instructions: string[];
   publishedAt: string;
