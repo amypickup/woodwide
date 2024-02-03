@@ -2,7 +2,6 @@ import Image from "next/image";
 import { Metadata } from "next";
 import { getRecipe } from "../../../../../sanity/sanity.query";
 import type { RecipeType } from "../../../../../types";
-import { PortableText, PortableTextComponents } from "@portabletext/react";
 import imageUrlBuilder from "@sanity/image-url";
 import client from "../../../../../sanity/sanity.client";
 
@@ -29,46 +28,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 const builder = imageUrlBuilder(client);
-
-const ingredientsComponents: PortableTextComponents = {
-  block: {
-    normal: ({ children }) => (
-      <p className="max-w-xl mx-auto mb-4 px-3 md:px-0">{children}</p>
-    ),
-  },
-  list: {
-    // Ex. 1: customizing common list types
-    bullet: ({ children }) => (
-      <ul className="list-inside list-disc max-w-xl mx-auto mb-4 px-3 md:px-0">
-        {children}
-      </ul>
-    ),
-    number: ({ children }) => (
-      <ol className="list-inside list-decimal max-w-xl mx-auto mb-4 px-3 md:px-0">
-        {children}
-      </ol>
-    ),
-  },
-  types: {
-    image: ({ value, isInline }) => {
-      return (
-        <Image
-          className="mb-2"
-          src={builder
-            .image(value)
-            .width(isInline ? 100 : 800)
-            .fit("max")
-            .auto("format")
-            .url()}
-          width={800}
-          height={460}
-          alt={value.alt || " "}
-          loading="lazy"
-        />
-      );
-    },
-  },
-};
 
 export default async function Recipe({ params }: Props) {
   const slug = params.recipe;
@@ -119,7 +78,6 @@ export default async function Recipe({ params }: Props) {
             </div>
           </div>
         </div>
-
         <div className="col-span-5">
           <Image
             src={builder
@@ -133,21 +91,30 @@ export default async function Recipe({ params }: Props) {
             alt={recipe.mainImage?.alt || recipe.name}
           />
         </div>
-
         <div className="col-span-3 mx-3 md:mx-0">{recipe.time}</div>
-
         <div className="col-span-5 mb-3 md:mb-0 mx-3 md:mx-0">
           {recipe.story}
         </div>
 
         <div className="col-span-3 border-black border-t-4 mx-3 md:mx-0">
           <div className="uppercase font-bold text-lg mb-6">Ingredients</div>
-          <PortableText
-            value={recipe.ingredients}
-            components={ingredientsComponents}
-          />
+          {recipe.ingredientsImport.map(
+            ({ sectionTitle, sectionIngredients, _key }) => (
+              <div key={_key}>
+                {sectionTitle ? (
+                  <p className="font-bold max-w-xl mx-auto mb-4 px-3 md:px-0">
+                    {sectionTitle}
+                  </p>
+                ) : null}
+                <ul className="list-inside list-disc max-w-xl mx-auto mb-4 px-3 md:px-0">
+                  {sectionIngredients.map((i) => (
+                    <li className="max-w-xl mx-auto px-3 md:px-0">{i}</li>
+                  ))}
+                </ul>
+              </div>
+            )
+          )}
         </div>
-
         <div className="col-span-5 border-black border-t-4 mx-3 md:mx-0">
           <div className="uppercase font-bold text-lg mb-6">Preparation</div>
           {recipe.instructions.map((instruction, index) => (

@@ -86,6 +86,25 @@ export default defineType({
       type: 'blockContent', 
     }),
     defineField({
+      name: 'ingredientsImport',
+      title: 'Imported Ingredients',
+      type: 'array',
+      of: [{
+        type: 'object',
+        fields: [{
+          name: 'sectionTitle',
+          title: 'Ingredient Section Title',
+          type: 'string',
+        },
+        {
+          name: 'sectionIngredients',
+          title: 'Ingredient Section List',
+          type: 'array',
+          of: [{ type: 'string' }],
+        }],
+      }],
+    }),
+    defineField({
       name: 'instructions',
       title: 'Instructions',
       description: 'Enter each step as a new text box in the group',

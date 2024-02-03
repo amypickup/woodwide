@@ -107,6 +107,7 @@ export async function getRecipe(slug: string) {
       },
       time,
       ingredients,
+      ingredientsImport,
       instructions,
       publishedAt,
     }`,
