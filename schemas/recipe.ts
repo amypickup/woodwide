@@ -1,122 +1,125 @@
-import {defineField, defineType} from 'sanity'
+import { defineField, defineType } from "sanity";
 
 export default defineType({
-  name: 'recipe',
-  title: 'Recipe',
-  type: 'document',
+  name: "recipe",
+  title: "Recipe",
+  type: "document",
   fields: [
     defineField({
-      name: 'title',
-      title: 'Title',
-      type: 'string',
+      name: "title",
+      title: "Title",
+      type: "string",
     }),
     defineField({
-      name: 'description',
-      title: 'Description',
-      type: 'string',
+      name: "description",
+      title: "Description",
+      type: "string",
     }),
     defineField({
-      name: 'collection',
-      title: 'Collection',
-      type: 'reference',
-      to: {type: 'collection'},
+      name: "collection",
+      title: "Collection",
+      type: "reference",
+      to: { type: "collection" },
     }),
     defineField({
-      name: 'story',
-      title: 'Story',
-      type: 'text',
+      name: "story",
+      title: "Story",
+      type: "text",
     }),
     defineField({
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
+      name: "slug",
+      title: "Slug",
+      type: "slug",
       options: {
-        source: 'title',
+        source: "title",
         maxLength: 200,
-        slugify: input => input
-          .toLowerCase()
-          .replace(/\s+/g, '-')
-          .slice(0, 200),
+        slugify: (input) =>
+          input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
       },
     }),
     defineField({
-      name: 'author',
-      title: 'Author',
-      type: 'reference',
-      to: {type: 'author'},
+      name: "author",
+      title: "Author",
+      type: "reference",
+      to: { type: "author" },
     }),
     defineField({
-      name: 'mainImage',
-      title: 'Main image',
-      type: 'image',
+      name: "mainImage",
+      title: "Main image",
+      type: "image",
       options: {
         hotspot: true,
       },
-      fields: [{
-        name: 'alt',
-        title: 'Alt',
-        type: 'string',
-      },
-      {
-        name: 'caption',
-        title: 'Caption',
-        type: 'string',
-      },
-    ],
-    }),
-    defineField({
-      name: 'categories',
-      title: 'Categories',
-      type: 'array',
-      of: [{type: 'reference', to: {type: 'category'}}],
-    }),
-    defineField({
-      name: 'publishedAt',
-      title: 'Published at',
-      type: 'datetime',
-    }),
-    defineField({
-      name: 'time',
-      title: 'Time',
-      type: 'string',
-    }),
-    defineField({
-      name: 'ingredientsImport',
-      title: 'Ingredients',
-      type: 'array',
-      of: [{
-        type: 'object',
-        fields: [{
-          name: 'sectionTitle',
-          title: 'Ingredient Section Title',
-          type: 'string',
+      fields: [
+        {
+          name: "alt",
+          title: "Alt",
+          type: "string",
         },
         {
-          name: 'sectionIngredients',
-          title: 'Ingredient Section List',
-          type: 'array',
-          of: [{ type: 'string' }],
-        }],
-      }],
+          name: "caption",
+          title: "Caption",
+          type: "string",
+        },
+      ],
     }),
     defineField({
-      name: 'instructions',
-      title: 'Instructions',
-      description: 'Enter each step as a new text box in the group',
-      type: 'array',
-      of: [{type: 'text'}],
+      name: "categories",
+      title: "Categories",
+      type: "array",
+      of: [{ type: "reference", to: { type: "category" } }],
+    }),
+    defineField({
+      name: "publishedAt",
+      title: "Published at",
+      type: "datetime",
+    }),
+    defineField({
+      name: "time",
+      title: "Time",
+      type: "string",
+    }),
+    defineField({
+      name: "ingredientsImport",
+      title: "Ingredients",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          fields: [
+            {
+              name: "sectionTitle",
+              title: "Ingredient Section Title",
+              type: "string",
+            },
+            {
+              name: "sectionIngredients",
+              title: "Ingredient Section List",
+              type: "array",
+              of: [{ type: "string" }],
+            },
+          ],
+        },
+      ],
+    }),
+    defineField({
+      name: "instructions",
+      title: "Instructions",
+      description: "Enter each step as a new text box in the group",
+      type: "array",
+      of: [{ type: "text" }],
     }),
   ],
 
   preview: {
     select: {
-      title: 'title',
-      author: 'author.name',
-      media: 'mainImage',
+      title: "title",
+      author: "author.name",
+      media: "mainImage",
     },
     prepare(selection) {
-      const {author} = selection
-      return {...selection, subtitle: author && `by ${author}`}
+      const { author } = selection;
+      return { ...selection, subtitle: author && `by ${author}` };
     },
   },
-})
+});
