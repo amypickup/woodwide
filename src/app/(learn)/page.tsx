@@ -1,8 +1,8 @@
-import { getDocuments } from "../../../sanity/sanity.query";
-import client from "../../../sanity/sanity.client";
+import { getDocuments } from "@/sanity/sanity.query";
+import client from "@/sanity/sanity.client";
 import imageUrlBuilder from "@sanity/image-url";
 import Image from "next/image";
-import type { DocumentType } from "../../../types";
+import type { DocumentType } from "@/types";
 
 const builder = imageUrlBuilder(client);
 

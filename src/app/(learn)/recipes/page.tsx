@@ -1,6 +1,6 @@
-import { getRecipes } from "../../../../sanity/sanity.query";
-import type { RecipeType } from "../../../../types";
-import client from "../../../../sanity/sanity.client";
+import { getRecipes } from "@/sanity/sanity.query";
+import type { RecipeType } from "@/types";
+import client from "@/sanity/sanity.client";
 import imageUrlBuilder from "@sanity/image-url";
 import Image from "next/image";
 
@@ -32,7 +32,9 @@ export default async function Recipes() {
                 ) : null}
               </div>
               <h3 className="mt-4 text-lg font-semibold">{recipe.title}</h3>
-              <p className="text-sm font-light">{recipe.author.name}</p>
+              {recipe.author ? (
+                <p className="text-sm font-light">{recipe.author.name}</p>
+              ) : null}
             </a>
           ))}
         </div>

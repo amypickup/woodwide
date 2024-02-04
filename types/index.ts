@@ -49,6 +49,18 @@ export type RecipeType = {
   publishedAt: string;
 };
 
+export type RecipeImportType = {
+  _id: string;
+  _type: string;
+  title: string;
+  description: string;
+  story: string;
+  slug: Slug;
+  time: string;
+  ingredientsImport: IngredientSection[];
+  instructions: string[];
+};
+
 export type DocumentType = {
   _id: string;
   _type: string;

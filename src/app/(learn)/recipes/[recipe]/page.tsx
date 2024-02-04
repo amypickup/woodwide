@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { Metadata } from "next";
-import { getRecipe } from "../../../../../sanity/sanity.query";
-import type { RecipeType } from "../../../../../types";
+import { getRecipe } from "@/sanity/sanity.query";
+import type { RecipeType } from "@/types";
 import imageUrlBuilder from "@sanity/image-url";
-import client from "../../../../../sanity/sanity.client";
+import client from "@/sanity/sanity.client";
 
 type Props = {
   params: {
@@ -51,45 +51,50 @@ export default async function Recipe({ params }: Props) {
           <h1 className="font-semibold text-4xl mb-2 px-3 md:px-0">
             {recipe.title}
           </h1>
-          {/* Author Section, TODO: build out author detail page, recipe.author.slug.current */}
-          <div className="mb-4 px-3 md:px-0">
-            <Image
-              width={40}
-              height={40}
-              src={builder
-                .image(recipe.author.image)
-                .width(120)
-                .height(120)
-                .url()}
-              alt={recipe.author.name}
-              className="inline-block mr-2 rounded-full"
-            />
-            <div className="inline-block text-sm align-middle">
-              <div>
-                By{" "}
-                <a
-                  href={`/authors/${recipe.author.slug.current}`}
-                  className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                >
-                  {recipe.author.name}
-                </a>
+
+          {recipe.author ? (
+            <div className="mb-4 px-3 md:px-0">
+              <Image
+                width={40}
+                height={40}
+                src={builder
+                  .image(recipe.author.image)
+                  .width(120)
+                  .height(120)
+                  .url()}
+                alt={recipe.author.name}
+                className="inline-block mr-2 rounded-full"
+              />
+              <div className="inline-block text-sm align-middle">
+                <div>
+                  By{" "}
+                  <a
+                    href={`/authors/${recipe.author.slug.current}`}
+                    className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                  >
+                    {recipe.author.name}
+                  </a>
+                </div>
+                <div className="font-light text-xs">{datePublished}</div>
               </div>
-              <div className="font-light text-xs">{datePublished}</div>
             </div>
-          </div>
+          ) : null}
         </div>
+
         <div className="col-span-5">
-          <Image
-            src={builder
-              .image(recipe.mainImage)
-              .width(800)
-              .fit("max")
-              .auto("format")
-              .url()}
-            width={800}
-            height={460}
-            alt={recipe.mainImage?.alt || recipe.name}
-          />
+          {recipe.mainImage ? (
+            <Image
+              src={builder
+                .image(recipe.mainImage)
+                .width(800)
+                .fit("max")
+                .auto("format")
+                .url()}
+              width={800}
+              height={460}
+              alt={recipe.mainImage?.alt || recipe.name}
+            />
+          ) : null}
         </div>
         <div className="col-span-3 mx-3 md:mx-0">{recipe.time}</div>
         <div className="col-span-5 mb-3 md:mb-0 mx-3 md:mx-0">
@@ -107,8 +112,10 @@ export default async function Recipe({ params }: Props) {
                   </p>
                 ) : null}
                 <ul className="list-inside list-disc max-w-xl mx-auto mb-4 px-3 md:px-0">
-                  {sectionIngredients.map((i) => (
-                    <li className="max-w-xl mx-auto px-3 md:px-0">{i}</li>
+                  {sectionIngredients.map((ingredient, index) => (
+                    <li className="max-w-xl mx-auto px-3 md:px-0" key={index}>
+                      {ingredient}
+                    </li>
                   ))}
                 </ul>
               </div>
